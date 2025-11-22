@@ -148,23 +148,21 @@ npm run build
 
 🔌 Consumindo a API Local
 
-Caso você queira rodar totalmente offline usando uma API local, basta ter uma API rodando em:
+Certifique-se de ter o Java JDK 17+ instalado.
 
-http://localhost:3000/
+Abra o projeto da API em sua IDE (Eclipse, IntelliJ ou VSCode com extensão Java).
 
+Configure o Tomcat local ou remoto:
 
-E no arquivo api.ts:
+Deploy do .war da API na pasta webapps do Tomcat.
 
-import axios from "axios";
+Configure o acesso ao banco de dados remoto (Oracle, MySQL ou outro):
 
-export const api = axios.create({
-  baseURL: "http://localhost:3000"  // API local real
-});
+Altere o arquivo de configuração application.properties ou equivalente com host, porta, usuário e senha.
 
+Inicie o Tomcat.
 
-Obs.: Se estiver usando JSON Server, por exemplo, basta rodar:
-
-npx json-server --watch db.json --port 3000
+Teste se a API está rodando
 
 ---
 
