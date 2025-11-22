@@ -17,33 +17,44 @@ const Cadastro = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
+ // 🔥 URL do backend Quarkus
+  const API_URL = `http://localhost:8080/usuario}`;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     setStatus("loading");
     setErrorMessage("");
 
     try {
-      await usuarioAPI.criar(formData);
-      
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(text || "Erro ao cadastrar");
+      }
+
       setStatus("success");
       setTimeout(() => {
         navigate("/");
-      }, 2000);
-    } catch (error: any) {
+      }, 1500);
+    } catch (err: any) {
+      console.error("Erro ao enviar cadastro:", err);
       setStatus("error");
-      setErrorMessage(error.message || "Erro ao realizar cadastro");
-      console.error("Erro no cadastro:", error);
+      setErrorMessage(err.message || "Falha ao se conectar ao servidor");
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (e: any) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
 
   return (
     <div className="min-h-screen py-12">
@@ -141,8 +152,6 @@ const Cadastro = () => {
                   value={formData.cpfUsua}
                   onChange={handleChange}
                   required
-                  pattern="\d{3}\.\d{3}\.\d{3}-\d{2}|\d{11}"
-                  placeholder="000.000.000-00"
                   className="w-full px-4 py-2 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>

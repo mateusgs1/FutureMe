@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { profissoesAPI, Profissao } from "@/services/api";
 
+
 const Profissoes = () => {
   const [profissoes, setProfissoes] = useState<Profissao[]>([]);
   const [loading, setLoading] = useState(true);
@@ -13,20 +14,15 @@ const Profissoes = () => {
 
   const carregarProfissoes = async () => {
     try {
-      setLoading(true);
-      setError(null);
-      const data = await profissoesAPI.listar();
-      setProfissoes(data);
-    } catch (err) {
-      setError(
-        "Não foi possível carregar as profissões. Verifique se a API está configurada."
-      );
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+    setLoading(true);
+    setError(null);
 
+    const data = await profissoesAPI.listar();
+    setProfissoes(data);
+  } catch (err) {
+    console.error("Erro na API:", err);
+
+  
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -88,6 +84,7 @@ const Profissoes = () => {
         </div>
 
         {profissoes.length === 0 ? (
+
           <div className="max-w-2xl mx-auto text-center bg-muted p-12 rounded-xl">
             <svg
               className="w-16 h-16 text-muted-foreground mx-auto mb-4"
@@ -150,6 +147,8 @@ const Profissoes = () => {
       </div>
     </div>
   );
+}
+  }
 };
 
 export default Profissoes;

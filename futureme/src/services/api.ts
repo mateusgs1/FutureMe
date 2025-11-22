@@ -1,7 +1,7 @@
 // Central API service for consuming Java backend (DDD + Quarkus)
 // Using fetch() for all HTTP requests
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "https://futureme-java-quarkus.onrender.com/";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080/";
 
 // Generic error handler
 const handleResponse = async <T>(response: Response): Promise<T> => {
@@ -36,12 +36,16 @@ const apiFetch = async <T>(
 export interface Profissao {
   id: number;
   nome: string;
-  descricao: string;
+ descricao: string;
   categoria: string;
   demanda: string;
   salarioMedio?: number;
   habilidadesRequeridas?: string[];
-  tendencias?: string;
+ tendencias?: string;
+}
+export interface Profissao {
+  id: number;
+  areaInteresseUsua?: string;
 }
 
 export interface Usuario {
@@ -75,20 +79,27 @@ export interface Recomendacao {
 
 // API Methods - Profissões
 export const profissoesAPI = {
-  listar: () => apiFetch<Profissao[]>("/profissoes"),
-  buscarPorId: (id: number) => apiFetch<Profissao>(`/profissoes/${id}`),
+  listar: () => apiFetch<Profissao[]>("/profissao"),
+
+  buscarPorId: (id: number) =>
+    apiFetch<Profissao>(`/profissao/${id}`),
+
   criar: (data: Omit<Profissao, "id">) =>
-    apiFetch<Profissao>("/profissoes", {
+    apiFetch<Profissao>("/profissao", {
       method: "POST",
       body: JSON.stringify(data),
     }),
+
   atualizar: (id: number, data: Partial<Profissao>) =>
-    apiFetch<Profissao>(`/profissoes/${id}`, {
+    apiFetch<Profissao>(`/profissao/${id}`, {
       method: "PUT",
       body: JSON.stringify(data),
     }),
+
   deletar: (id: number) =>
-    apiFetch<void>(`/profissoes/${id}`, { method: "DELETE" }),
+    apiFetch<void>(`/profissao/${id}`, {
+      method: "DELETE",
+    }),
 };
 
 // API Methods - Usuários
