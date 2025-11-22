@@ -8,11 +8,11 @@ const Home = () => {
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in">
               Prepare-se para o
               <span className="block mt-2">Futuro do Trabalho</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
               Descubra profissões emergentes, organize sua rotina e equilibre
               vida pessoal e profissional com o FutureMe
             </p>
@@ -25,7 +25,7 @@ const Home = () => {
               </Link>
               <Link
                 to="/sobre"
-                className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg border-2 border-white/30 hover:bg-white/20 transition-all"
+                className="px-8 py-4 bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground font-semibold rounded-lg border-2 border-primary-foreground/30 hover:bg-primary-foreground/20 transition-all"
               >
                 Saiba Mais
               </Link>
@@ -45,7 +45,7 @@ const Home = () => {
             <div className="bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-border">
               <div className="w-16 h-16 bg-gradient-primary rounded-lg flex items-center justify-center mb-6">
                 <svg
-                  className="w-8 h-8 text-white"
+                  className="w-8 h-8 text-primary-foreground"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -71,7 +71,7 @@ const Home = () => {
             <div className="bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-border">
               <div className="w-16 h-16 bg-gradient-secondary rounded-lg flex items-center justify-center mb-6">
                 <svg
-                  className="w-8 h-8 text-white"
+                  className="w-8 h-8 text-secondary-foreground"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -97,7 +97,7 @@ const Home = () => {
             <div className="bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-border">
               <div className="w-16 h-16 bg-gradient-accent rounded-lg flex items-center justify-center mb-6">
                 <svg
-                  className="w-8 h-8 text-white"
+                  className="w-8 h-8 text-accent-foreground"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -133,7 +133,7 @@ const Home = () => {
             </p>
             <Link
               to="/profissoes"
-              className="inline-block px-8 py-4 bg-gradient-primary text-white font-semibold rounded-lg shadow-primary hover:shadow-lg transform hover:-translate-y-1 transition-all"
+              className="inline-block px-8 py-4 bg-gradient-primary text-primary-foreground font-semibold rounded-lg shadow-primary hover:shadow-lg transform hover:-translate-y-1 transition-all"
             >
               Começar Agora
             </Link>

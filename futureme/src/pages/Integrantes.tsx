@@ -1,4 +1,3 @@
-// Página de Integrantes - Adicione os dados dos membros da equipe aqui
 
 interface Integrante {
   nome: string;
@@ -13,14 +12,29 @@ const Integrantes = () => {
   // TODO: Adicionar dados reais dos integrantes
   const integrantes: Integrante[] = [
     {
-      nome: "Seu Nome",
-      rm: "RM12345",
-      turma: "1TDSPX",
-      foto: "https://via.placeholder.com/150",
+      nome: "Felipe Maglio Filho",
+      rm: "RM563512",
+      turma: "1TDSPJ",
+      foto: "C:\Projetos - Fiap\front-gs\FutureMe\futureme\src\assets\lelepe.jpeg",
       github: "https://github.com/seu-usuario",
       linkedin: "https://linkedin.com/in/seu-perfil",
     },
-    // Adicione mais integrantes aqui
+    {
+      nome: "Vitória Valentina Maglio",
+      rm: "RM12345",
+      turma: "1TDSPX",
+      foto: "C:\Projetos - Fiap\front-gs\FutureMe\futureme\src\assets\vava.jpeg",
+      github: "https://github.com/seu-usuario",
+      linkedin: "https://linkedin.com/in/seu-perfil",
+    },
+    {
+      nome: "Matheus Granja dos Santos",
+      rm: "RM12345",
+      turma: "1TDSPX",
+      foto: "C:\Projetos - Fiap\front-gs\FutureMe\futureme\src\assets\momo.jpeg",
+      github: "https://github.com/seu-usuario",
+      linkedin: "https://linkedin.com/in/seu-perfil",
+    },
   ];
 
   return (
