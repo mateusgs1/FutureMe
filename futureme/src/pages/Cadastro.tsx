@@ -17,7 +17,7 @@ const Cadastro = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
- // 🔥 URL do backend Quarkus
+ //  URL do backend Quarkus
   const API_URL = `http://localhost:8080/usuario}`;
 
   const handleSubmit = async (e: React.FormEvent) => {

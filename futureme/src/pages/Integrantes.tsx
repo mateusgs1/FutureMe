@@ -112,12 +112,6 @@ const Integrantes = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center bg-muted p-8 rounded-xl max-w-2xl mx-auto">
-          <p className="text-muted-foreground">
-            <strong>Nota:</strong> Adicione os dados dos integrantes editando o
-            arquivo <code className="bg-background px-2 py-1 rounded">src/pages/Integrantes.tsx</code>
-          </p>
-        </div>
       </div>
     </div>
   );
