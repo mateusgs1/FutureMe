@@ -7,6 +7,10 @@ interface Integrante {
   github: string;
   linkedin: string;
 }
+import felipeFoto from "@/assets/lelepe.jpeg";
+import mateusFoto from "@/assets/momo.jpeg";
+import vitoriaFoto from "@/assets/vava.jpeg";
+
 
 const Integrantes = () => {
   // TODO: Adicionar dados reais dos integrantes
@@ -15,7 +19,7 @@ const Integrantes = () => {
       nome: "Felipe Maglio Filho",
       rm: "RM563512",
       turma: "1TDSPJ",
-      foto: "C:\Projetos - Fiap\front-gs\FutureMe\futureme\src\assets\lelepe.jpeg",
+      foto:  felipeFoto,
       github: "https://github.com/FelipeMaglio",
       linkedin: "https://linkedin.com/in/felipe-maglio-filho-aa950a367",
     },
@@ -23,7 +27,7 @@ const Integrantes = () => {
       nome: "Vitória Valentina Maglio",
       rm: "RM12345",
       turma: "1TDSPX",
-      foto: "C:\Projetos - Fiap\front-gs\FutureMe\futureme\src\assets\vava.jpeg",
+      foto: vitoriaFoto,
       github: "https://github.com/VitoriaMaglio",
       linkedin: "https://linkedin.com/in/vitoriamaglio/",
     },
@@ -31,7 +35,7 @@ const Integrantes = () => {
       nome: "Matheus Granja dos Santos",
       rm: "RM12345",
       turma: "1TDSPX",
-      foto: "C:\Projetos - Fiap\front-gs\FutureMe\futureme\src\assets\momo.jpeg",
+      foto: mateusFoto,
       github: "https://github.com/mateusgs1",
       linkedin: "https://www.linkedin.com/in/mateus-g-santos-3a93a92ba/",
     },
