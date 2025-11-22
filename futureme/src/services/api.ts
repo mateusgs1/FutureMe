@@ -1,7 +1,7 @@
 // Central API service for consuming Java backend (DDD + Quarkus)
 // Using fetch() for all HTTP requests
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080/api";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "https://futureme-java-quarkus.onrender.com/";
 
 // Generic error handler
 const handleResponse = async <T>(response: Response): Promise<T> => {
