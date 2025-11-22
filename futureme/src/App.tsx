@@ -13,6 +13,8 @@ import Rotina from "@/pages/Rotina";
 import Recomendacoes from "@/pages/Recomendacoes";
 import NotFound from "@/pages/NotFound";
 
+
+
 const App = () => (
   <ThemeProvider>
     <BrowserRouter>
