@@ -70,6 +70,13 @@ const Header = () => {
             >
               Integrantes
             </Link>
+            <Link
+              to="/cadastro"
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
+              Cadastro
+            </Link>
+             
           </div>
 
           {/* Theme Toggle & Mobile Menu Button */}
@@ -201,6 +208,11 @@ const Header = () => {
             >
               Contato
             </Link>
+            <Link
+              to="/cadastro"
+              className="text-foreground hover:text-primary transition-colors font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            ></Link>
             <Link
               to="/integrantes"
               className="text-foreground hover:text-primary transition-colors font-medium"

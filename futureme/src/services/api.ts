@@ -45,12 +45,14 @@ export interface Profissao {
 }
 
 export interface Usuario {
-  id: number;
-  nome: string;
-  email: string;
-  perfil?: string;
-  interesses?: string[];
-  experiencia?: string;
+  loginUsua: string;
+  senhaUsua: string;
+  nomeUsua: string;
+  cpfUsua: string;
+  emailUsua: string;
+  telefoneUsua: string;
+  profissaoAntigaUsua: string;
+  areaInteresseUsua: string;
 }
 
 export interface Rotina {
@@ -90,22 +92,16 @@ export const profissoesAPI = {
 };
 
 // API Methods - Usuários
-export const usuariosAPI = {
-  listar: () => apiFetch<Usuario[]>("/usuarios"),
-  buscarPorId: (id: number) => apiFetch<Usuario>(`/usuarios/${id}`),
-  criar: (data: Omit<Usuario, "id">) =>
-    apiFetch<Usuario>("/usuarios", {
+export const usuarioAPI = {
+  criar: (data: Usuario) =>
+    apiFetch<Usuario>("/usuario", {
       method: "POST",
       body: JSON.stringify(data),
     }),
-  atualizar: (id: number, data: Partial<Usuario>) =>
-    apiFetch<Usuario>(`/usuarios/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(data),
-    }),
-  deletar: (id: number) =>
-    apiFetch<void>(`/usuarios/${id}`, { method: "DELETE" }),
+
+  listar: () => apiFetch<Usuario[]>("/usuario"),
 };
+
 
 // API Methods - Rotinas
 export const rotinasAPI = {

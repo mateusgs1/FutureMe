@@ -12,6 +12,7 @@ import ProfissaoDetalhe from "@/pages/ProfissaoDetalhe";
 import Rotina from "@/pages/Rotina";
 import Recomendacoes from "@/pages/Recomendacoes";
 import NotFound from "@/pages/NotFound";
+import Cadastro from "./pages/Cadastro";
 
 
 
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contato" element={<Contato />} />
+            <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/integrantes" element={<Integrantes />} />
             <Route path="/profissoes" element={<Profissoes />} />
             <Route path="/profissao/:id" element={<ProfissaoDetalhe />} />
