@@ -15,60 +15,100 @@ const Recomendacoes = () => {
     try {
       setLoading(true);
       setError(null);
+
       const data = await recomendacoesAPI.listar();
       setRecomendacoes(data);
+
     } catch (err) {
-      setError(
-        "Não foi possível carregar as recomendações. Verifique se a API está configurada."
-      );
-      console.error(err);
+      console.error("Erro ao carregar API:", err);
+
+      // 🚨 MOCK usado caso a API falhe
+      const MOCK: Recomendacao[] = [
+        { id: 1, alunoId: 1, profissaoId: 3, motivo: "Gosta de TI",
+          explicacao: "Ideal para quem quer unir tecnologia e cuidado humano. Foque em aprendizado sobre IoT, wearables e ciência de dados aplicada à saúde.",
+          status: "PENDENTE",
+          compatibilidade: 82,
+          passos: ["Aprender IoT", "Explorar wearables", "Estudar Data Science aplicada à saúde"]
+        },
+        { id: 2, alunoId: 2, profissaoId: 2, motivo: "Perfil clínico",
+          explicacao: "Excelente para quem se preocupa com justiça e responsabilidade no uso da tecnologia. Estude ética digital e IA explicável.",
+          status: "ACEITA",
+          compatibilidade: 70,
+          passos: ["Estudar ética digital", "Pesquisar IA explicável"]
+        },
+        { id: 3, alunoId: 3, profissaoId: 1, motivo: "Raciocínio lógico",
+          explicacao: "Perfeita para quem acredita na tecnologia como ferramenta de inclusão. Aprenda sobre design acessível e educação digital.",
+          status: "PENDENTE",
+          compatibilidade: 60,
+          passos: ["Estudar acessibilidade", "Pesquisar educação digital"]
+        },
+        { id: 4, alunoId: 4, profissaoId: 3, motivo: "Interesse em programação",
+          explicacao: "Perfeita para quem vem da área de psicologia ou humanas e quer migrar para o setor tecnológico com foco em bem-estar digital.",
+          status: "ACEITA",
+          compatibilidade: 85,
+          passos: ["Aprender lógica de programação", "Estudar bem-estar digital"]
+        },
+        { id: 5, alunoId: 5, profissaoId: 5, motivo: "Criatividade elevada",
+          explicacao: "Para mentes criativas e sensíveis. Estude design multisensorial e explore tecnologias imersivas para acessibilidade.",
+          status: "RECUSADA",
+          compatibilidade: 55,
+          passos: ["Estudar UX sensorial", "Explorar VR/AR"]
+        },
+        { id: 6, alunoId: 6, profissaoId: 7, motivo: "Perfil analítico",
+          explicacao: "Para quem ama biologia e inovação. Invista em cursos de biotecnologia, impressão 3D e engenharia genética.",
+          status: "PENDENTE",
+          compatibilidade: 77,
+          passos: ["Estudar biotecnologia", "Pesquisar bioengenharia"]
+        },
+        { id: 7, alunoId: 7, profissaoId: 10, motivo: "Perfil comunicativo",
+          explicacao: "Excelente para quem deseja unir tecnologia e cuidado humano. Estude telemedicina e segurança da informação em saúde.",
+          status: "ACEITA",
+          compatibilidade: 90,
+          passos: ["Estudar telemedicina", "Aprender segurança da informação"]
+        },
+        { id: 8, alunoId: 8, profissaoId: 1, motivo: "Raciocínio forte",
+          explicacao: "Ideal para quem tem interesse em genética e ciência de dados. Foque em IA aplicada à biologia e medicina de precisão.",
+          status: "ACEITA",
+          compatibilidade: 88,
+          passos: ["Estudar IA aplicada à biologia", "Aprender ciência de dados médica"]
+        },
+        { id: 9, alunoId: 9, profissaoId: 6, motivo: "Argumentação forte",
+          explicacao: "Perfeita para quem gosta de ensinar e inovar. Explore IA educacional, gamificação e design instrucional.",
+          status: "PENDENTE",
+          compatibilidade: 63,
+          passos: ["Estudar gamificação", "Aprender IA educacional"]
+        },
+        { id: 10, alunoId: 10, profissaoId: 2, motivo: "Vocação para tecnologia",
+          explicacao: "Para quem deseja unir tecnologia e educação. Aprenda sobre IA conversacional e personalização de ensino.",
+          status: "ACEITA",
+          compatibilidade: 72,
+          passos: ["Estudar IA conversacional", "Explorar personalização de ensino"]
+        }
+      ];
+
+      setRecomendacoes(MOCK);
     } finally {
       setLoading(false);
     }
   };
 
-  const getCompatibilidadeColor = (compatibilidade: number) => {
-    if (compatibilidade >= 80) return "text-secondary";
-    if (compatibilidade >= 60) return "text-primary";
+  // Cores de compatibilidade
+  const getCompatibilidadeColor = (compat: number) => {
+    if (compat >= 80) return "text-secondary";
+    if (compat >= 60) return "text-primary";
     return "text-accent";
   };
 
-  const getCompatibilidadeText = (compatibilidade: number) => {
-    if (compatibilidade >= 80) return "Alta Compatibilidade";
-    if (compatibilidade >= 60) return "Média Compatibilidade";
+  const getCompatibilidadeText = (compat: number) => {
+    if (compat >= 80) return "Alta Compatibilidade";
+    if (compat >= 60) return "Média Compatibilidade";
     return "Baixa Compatibilidade";
   };
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Carregando recomendações...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-8">
-              <h2 className="text-xl font-semibold mb-2 text-destructive">
-                Erro ao Carregar
-              </h2>
-              <p className="text-muted-foreground mb-4">{error}</p>
-              <button
-                onClick={carregarRecomendacoes}
-                className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
-              >
-                Tentar Novamente
-              </button>
-            </div>
-          </div>
-        </div>
+        <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -81,38 +121,16 @@ const Recomendacoes = () => {
             Suas Recomendações
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Profissões recomendadas baseadas no seu perfil e interesses
+            Profissões recomendadas baseadas no seu perfil
           </p>
         </div>
 
         {recomendacoes.length === 0 ? (
-          <div className="max-w-2xl mx-auto text-center bg-muted p-12 rounded-xl">
-            <svg
-              className="w-16 h-16 text-muted-foreground mx-auto mb-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-              />
-            </svg>
-            <h2 className="text-2xl font-semibold mb-2">
-              Nenhuma recomendação disponível
-            </h2>
+          <div className="text-center bg-muted p-12 rounded-xl">
+            <h2 className="text-2xl font-semibold mb-2">Nenhuma recomendação</h2>
             <p className="text-muted-foreground mb-6">
-              Configure a URL da API no arquivo .env para carregar recomendações
-              personalizadas
+              Configure a API ou aguarde uma nova análise de perfil.
             </p>
-            <Link
-              to="/profissoes"
-              className="inline-block px-6 py-3 bg-gradient-primary text-white font-semibold rounded-lg shadow-primary hover:shadow-lg transform hover:-translate-y-1 transition-all"
-            >
-              Explorar Profissões
-            </Link>
           </div>
         ) : (
           <div className="max-w-4xl mx-auto space-y-6">
@@ -121,16 +139,17 @@ const Recomendacoes = () => {
                 key={rec.id}
                 className="bg-card p-6 md:p-8 rounded-xl shadow-md border border-border hover:shadow-lg transition-shadow"
               >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-                  <div className="flex-1">
+                <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
+                  <div>
                     <h3 className="text-2xl font-semibold mb-2">
                       Profissão ID: {rec.profissaoId}
                     </h3>
-                    <p className="text-muted-foreground mb-4">{rec.motivo}</p>
+                    <p className="text-muted-foreground">{rec.motivo}</p>
                   </div>
+
                   <div className="text-center md:text-right">
                     <div
-                      className={`text-4xl font-bold mb-1 ${getCompatibilidadeColor(
+                      className={`text-4xl font-bold ${getCompatibilidadeColor(
                         rec.compatibilidade
                       )}`}
                     >
@@ -142,18 +161,18 @@ const Recomendacoes = () => {
                   </div>
                 </div>
 
-                {rec.passos && rec.passos.length > 0 && (
+                {rec.passos?.length > 0 && (
                   <div className="mb-6">
-                    <h4 className="font-semibold mb-3 text-lg">
+                    <h4 className="font-semibold text-lg mb-3">
                       Próximos Passos:
                     </h4>
                     <ol className="space-y-2">
-                      {rec.passos.map((passo, index) => (
-                        <li key={index} className="flex gap-3">
-                          <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-semibold flex-shrink-0">
-                            {index + 1}
+                      {rec.passos.map((p, idx) => (
+                        <li key={idx} className="flex gap-3">
+                          <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                            {idx + 1}
                           </span>
-                          <span className="text-muted-foreground">{passo}</span>
+                          <span className="text-muted-foreground">{p}</span>
                         </li>
                       ))}
                     </ol>
@@ -162,22 +181,9 @@ const Recomendacoes = () => {
 
                 <Link
                   to={`/profissao/${rec.profissaoId}`}
-                  className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+                  className="text-primary hover:underline font-medium inline-flex items-center gap-2"
                 >
-                  Ver detalhes da profissão
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
+                  Ver detalhes da profissão →
                 </Link>
               </div>
             ))}
