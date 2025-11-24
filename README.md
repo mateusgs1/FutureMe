@@ -5,6 +5,12 @@ A plataforma fornece recomendações personalizadas de carreiras emergentes, al�
 
 ---
 
+Vídeo do projeto
+
+https://youtu.be/scILFV7mPV4
+
+--- 
+
 🌐 GitHub do Projeto
 
 https://github.com/mateusgs1/FutureMe
