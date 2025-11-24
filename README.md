@@ -5,6 +5,12 @@ A plataforma fornece recomendações personalizadas de carreiras emergentes, al�
 
 ---
 
+Link da API
+
+https://futureme-java-quarkus.onrender.com/usuario/vi123
+
+---
+
 Vídeo do projeto
 
 https://youtu.be/scILFV7mPV4
