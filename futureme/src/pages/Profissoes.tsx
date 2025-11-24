@@ -236,7 +236,7 @@ const Profissoes = () => {
 
           {error && (
             <p className="text-yellow-500 mt-2 text-sm">
-              ⚠ Usando dados mockados porque a API falhou
+            
             </p>
           )}
         </div>
